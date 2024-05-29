@@ -8,4 +8,7 @@
         <servlet-name>TestMenu</servlet-name>
         <url-pattern>/TestMenu</url-pattern>
     </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>homepage.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

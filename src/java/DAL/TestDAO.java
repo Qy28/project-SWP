@@ -30,10 +30,7 @@ public class TestDAO extends DAO{
     public static void setINS(DAO INS) {
         DAO.INS = INS;
     }
-    
-    public void loadTest(){
-        
-    }
+
     public TestDAO() {
     }
 
