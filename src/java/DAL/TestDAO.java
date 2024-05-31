@@ -4,39 +4,90 @@
  */
 package DAL;
 
+import java.sql.Date;
 import Models.Test;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Vector;
 
 /**
  *
  * @author Admin
  */
-public class TestDAO extends DAO{
+public class TestDAO {
     
-    private List<Test> test;
+    private Connection con;
+    private Vector<Test> test;
+    private String status = "ok";
 
-    public List<Test> getTest() {
+    public Vector<Test> getTest() {
         return test;
     }
+    public static TestDAO INS=new TestDAO();
 
-    public void setTest(List<Test> test) {
+    public TestDAO() {
+        if (INS == null)
+        try {
+            con = new DBContext().connection;
+        } catch (Exception e) {
+            status = "Error at con " + e.getMessage();
+        } else if (con == null) {
+            con = new DBContext().connection;
+        } else {
+            INS = this;
+        }
+    }
+
+    public void setTest(Vector<Test> test) {
         this.test = test;
     }
 
-    public static DAO getINS() {
+    public static TestDAO getINS() {
         return INS;
     }
 
-    public static void setINS(DAO INS) {
-        DAO.INS = INS;
+    public Connection getCon() {
+        return con;
     }
 
-    public TestDAO() {
+    public void setCon(Connection con) {
+        this.con = con;
     }
 
-    public TestDAO(List<Test> test) {
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+
+    public TestDAO(Vector<Test> test) {
         this.test = test;
     }
     
-    
+    public void loadTest(){
+            String sql = """
+                   Select * from Test""";
+        test = new Vector<>();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String title = rs.getString(2);
+                String pid = rs.getString(3);
+                Short level = rs.getShort(4);
+                Date dateCreated =rs.getDate(5);
+                boolean state=rs.getBoolean(6);
+                test.add(new Test(id, title, pid, level, dateCreated, state));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error at load Customer" + e.getMessage());
+        }
+    }
 }
