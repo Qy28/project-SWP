@@ -75,6 +75,4 @@ public class Question {
     public void setAnswerDescipt(String answerDescipt) {
         this.answerDescipt = answerDescipt;
     }
-    
-    
 }
