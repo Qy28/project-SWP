@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -20,11 +19,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <i class="fa fa-remove"></i>
     </a>
     <img src="/w3images/avatar_g2.jpg" style="width:45%;" class="w3-round"><br><br>
-    <h4><b>PORTFOLIO</b></h4>
-    <p class="w3-text-grey">Template by W3.CSS</p>
+    <h4><b>SproutEnglish</b></h4>
   </div>
   <div class="w3-bar-block">
-    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
+    <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>View your progress</a> 
     <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
   </div>
@@ -49,13 +47,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     
-    <h1><b>My Portfolio</b></h1>
+    <h1><b class="content-head">SproutEnglish</b></h1>
     <div class="w3-section w3-bottombar w3-padding-16">
       <span class="w3-margin-right">Filter:</span> 
       <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Reading </button>
+      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-diamond w3-margin-right"></i>Listening</button>
+      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-diamond w3-margin-right"></i>Writing</button>
     </div>
     
   
@@ -131,18 +129,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     
     
     
-    <h4>How much I charge</h4>
+    <h4>Project Price</h4>
     <!-- Pricing Tables -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-black w3-xlarge w3-padding-32">Basic</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">1GB Storage</li>
-          <li class="w3-padding-16">Mail Support</li>
+          <li class="w3-black w3-xlarge w3-padding-32">Standard</li>
+          <li class="w3-padding-16">View answer explanation</li>
+          <li class="w3-padding-16"></li>
+          <li class="w3-padding-16"></li>
+          <li class="w3-padding-16"></li>
           <li class="w3-padding-16">
-            <h2>$ 10</h2>
+            <h2>$0 - Free</h2>
             <span class="w3-opacity">per month</span>
           </li>
           <li class="w3-light-grey w3-padding-24">
@@ -154,12 +152,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <div class="w3-third w3-margin-bottom">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-teal w3-xlarge w3-padding-32">Pro</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">50GB Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
+          <li class="w3-padding-16">Take training test</li>
+          <li class="w3-padding-16">View answer explanation</li>
+          <li class="w3-padding-16">Download test</li>
+          <li class="w3-padding-16"></li>
           <li class="w3-padding-16">
-            <h2>$ 25</h2>
+            <h2>$ 5</h2>
             <span class="w3-opacity">per month</span>
           </li>
           <li class="w3-light-grey w3-padding-24">
@@ -171,12 +169,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <div class="w3-third">
         <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
           <li class="w3-black w3-xlarge w3-padding-32">Premium</li>
-          <li class="w3-padding-16">Web Design</li>
-          <li class="w3-padding-16">Photography</li>
-          <li class="w3-padding-16">Unlimited Storage</li>
-          <li class="w3-padding-16">Endless Support</li>
+          <li class="w3-padding-16">Take training test</li>
+          <li class="w3-padding-16">View answer explanation</li>
+          <li class="w3-padding-16">Download test</li>
+          <li class="w3-padding-16">Take smart test</li>
+          <li class="w3-padding-16">Check for user training data and customise training test</li>
           <li class="w3-padding-16">
-            <h2>$ 25</h2>
+            <h2>$ 10</h2>
             <span class="w3-opacity">per month</span>
           </li>
           <li class="w3-light-grey w3-padding-24">
@@ -193,15 +192,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-        <p>email@email.com</p>
+        <p>Minhdeptrai@gmail.com</p>
       </div>
       <div class="w3-third w3-teal">
         <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-        <p>Chicago, US</p>
+        <p>HaNoi, VN</p>
       </div>
       <div class="w3-third w3-dark-grey">
         <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-        <p>512312311</p>
+        <p>076749858</p>
       </div>
     </div>
     <hr class="w3-opacity">
@@ -226,9 +225,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   <footer class="w3-container w3-padding-32 w3-dark-grey">
   <div class="w3-row-padding">
     <div class="w3-third">
-      <h3>FOOTER</h3>
-      <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+      <h3>Overall</h3>
+      <p>Any-level courses on various aspects of English, including grammar and writing. 
+        Convenient for learning on the go; extensive library of lessons; paid subscription for premium content.
+      </p>
+
     </div>
   
     <div class="w3-third">
@@ -250,11 +251,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-third">
       <h3>POPULAR TAGS</h3>
       <p>
-        <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">London</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">DIY</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Family</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Shopping</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Games</span>
+        <span class="w3-tag w3-black w3-margin-bottom">Smart Study</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">New day New word</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Learning Stratedgy</span>
+        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Hoc cung quy beo</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Scholarship</span> 
       </p>
     </div>
 
