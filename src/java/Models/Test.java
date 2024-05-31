@@ -77,6 +77,11 @@ public class Test {
     public void setState(boolean state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "Test{" + "TestId=" + TestId + ", title=" + title + ", Pid=" + Pid + ", level=" + level + ", dateCreated=" + dateCreated + ", state=" + state + '}';
+    }
     
     
 }
