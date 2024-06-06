@@ -155,7 +155,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Question](
 	[QuestionId] [int] NOT NULL,
-	[TestId] [int] NOT NULL,
+	[TestId] [int]  NULL,
 	[QuestionTypeId] [decimal](10, 0) NOT NULL,
 	[Detail] [text] NOT NULL,
 	[Answer] [varchar](64) NOT NULL,
@@ -298,7 +298,7 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Question]  WITH CHECK ADD FOREIGN KEY([TestId])
 REFERENCES [dbo].[Test] ([TestId])
-ON DELETE CASCADE
+ON DELETE set null
 GO
 ALTER TABLE [dbo].[QuestionAnswerDetail]  WITH CHECK ADD FOREIGN KEY([QuestionId])
 REFERENCES [dbo].[Question] ([QuestionId])
