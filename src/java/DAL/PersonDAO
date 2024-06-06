@@ -1,0 +1,155 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package dal;
+
+import model.Person;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author ASUS
+ */
+public class PersonDAO extends DBContext {
+
+    public Vector<Person> getAllUser() {
+        String sql = "SELECT * FROM dbo.Person";
+        Vector<Person> vector = new Vector<>();
+        try {
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String Pid = rs.getString(1);
+                String name = rs.getString(2);
+                String PassWord = rs.getString(3);
+                String DoB = rs.getString(4);
+                String PhoneNumber = rs.getString(5);
+                int  Role = rs.getInt(6);               
+                Person p = new Person(Pid,name, PassWord, DoB , PhoneNumber, Role);
+                vector.add(p);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return vector;
+    }
+    public void removePerson(String Pid) {
+    PreparedStatement stm = null;
+    String sql = "DELETE FROM Users WHERE uID = ?";
+    try {
+        stm = connection.prepareStatement(sql);
+        stm.setString(1, Pid);
+        int rowsAffected = stm.executeUpdate();
+        if (rowsAffected > 0) {
+            System.out.println("Delete successful");
+        } else {
+            System.out.println("No rows deleted. User with ID " + Pid + " not found.");
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    } finally {
+        try {
+            if (stm != null) {
+                stm.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+}
+
+
+    public Person getUser(String userL, String passL) {
+        Person p = new Person();
+        String sql = "SELECT * FROM dbo.Person where [name]='" + userL + "' and PassWord='" + passL + "'";
+        try {
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String Pid = rs.getString(1);
+                String name = rs.getString(2);
+                String PassWord = rs.getString(3);
+                String DoB = rs.getString(4);
+                String PhoneNumber = rs.getString(5);
+                int  Role = rs.getInt(6);               
+                p = new Person(Pid,name, PassWord, DoB , PhoneNumber, Role);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return p;
+    }
+
+    public Person checkUser(String userL) {
+        Person p = new Person();
+        String sql = "SELECT * FROM dbo.Person where [user]='" + userL + "'";
+        try {
+
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String Pid = rs.getString(1);
+                String name = rs.getString(2);
+                String PassWord = rs.getString(3);
+                String DoB = rs.getString(4);
+                String PhoneNumber = rs.getString(5);
+                int  Role = rs.getInt(6);               
+                p = new Person(Pid,name, PassWord, DoB , PhoneNumber, Role);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return p;
+    }
+
+    public void insert(Person person) {
+        PreparedStatement stm = null;
+        String sql = "INSERT INTO [dbo].[Person]\n"
+                + "           ([Pid]\n"
+                + "           ,[name]\n"
+                + "           ,[PassWord]\n"
+                + "           ,[DoB]\n"
+                + "           ,[PhoneNumber]\n"
+                + "           ,[Role]\n"                
+                + "\n"
+                + "     VALUES\n"
+                + "           (?,?,?,?,?,?,?,?)";
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, person.getPid());
+            stm.setString(2, person.getName());
+            stm.setString(3, person.getPassWord());
+            stm.setString(4, person.getDoB());
+            stm.setString(5, person.getPhoneNumber());
+            stm.setInt(6, person.getRole());
+           
+            stm.executeUpdate();
+            System.out.println("Insert OK");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public static void main(String[] args) {
+       PersonDAO d = new PersonDAO();
+       Vector<Person> p =d.getAllUser();
+        PersonDAO userDao = new PersonDAO();
+        Person user = userDao.getUser("dai123", "123456");
+        System.out.println(user);
+
+    }
+
+}
