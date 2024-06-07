@@ -204,7 +204,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[QuestionType](
 	[QuestionTypeId] [decimal](10, 0) NOT NULL,
-	[TypeName] [varchar](16) NOT NULL,
+	[TypeName] [varchar](32) NOT NULL,
 	[NumsOfQuestion] [decimal](2, 0) NULL,
 PRIMARY KEY CLUSTERED 
 (
