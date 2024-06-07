@@ -158,7 +158,6 @@ CREATE TABLE [dbo].[Question](
 	[TestId] [int]  NULL,
 	[QuestionTypeId] [decimal](10, 0) NOT NULL,
 	[Detail] [text] NOT NULL,
-	[Answer] [varchar](64) NOT NULL,
 	[AnswerDescription] [text] NULL,
 	 [State] [bit] null,
 PRIMARY KEY CLUSTERED 
