@@ -1,5 +1,6 @@
 public class Person {
-    private String Pid,name , PassWord, DoB, PhoneNumber, Role;
+    private String Pid,name , PassWord, DoB, PhoneNumber;
+    private int Role;
 
     public Person() {
     }
@@ -11,7 +12,7 @@ public class Person {
 
     
 
-    public Person(String Pid, String name, String PassWord, String DoB, String PhoneNumber, String Role) {
+    public Person(String Pid, String name, String PassWord, String DoB, String PhoneNumber, int Role) {
         this.Pid = Pid;
         this.name = name;
         this.PassWord = PassWord;
@@ -60,11 +61,11 @@ public class Person {
         this.PhoneNumber = PhoneNumber;
     }
 
-    public String getRole() {
+    public int getRole() {
         return Role;
     }
 
-    public void setRole(String Role) {
+    public void setRole(int Role) {
         this.Role = Role;
     }
 }
