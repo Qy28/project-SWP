@@ -90,4 +90,47 @@ public class TestDAO {
             System.out.println("Error at load Customer" + e.getMessage());
         }
     }
+    
+    public void updateTest(int testId,String title,String Pid,short level,Date dateCreated,boolean State){
+        String sql = """
+                                        Update Test   SET [Title] = ?   ,[Pid] = ?,[Level]=?,[Date]=?,[State]=?
+                                                                    WHERE [TestId] =?;""";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setString(2, Pid);
+            ps.setInt(3, level);
+            ps.setDate(4, dateCreated);
+            ps.setBoolean(5, State);
+            ps.setInt(6, testId);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Error at load Customer" + e.getMessage());
+        }
+    }
+    public void deleteTest(int testId){
+        String sql="Delete from Test where [TestId]=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, testId);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Error at load Customer" + e.getMessage());
+        }
+    }
+    public void insertTest(int testId,String title,String Pid,short level,Date dateCreated,boolean State){
+        String sql="Insert into Test values (?,?,?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, testId);
+            ps.setString(2, title);
+            ps.setString(3, Pid);
+            ps.setInt(4, level);
+            ps.setDate(5, dateCreated);
+            ps.setBoolean(6, State);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Error at load Customer" + e.getMessage());
+        }
+    }
 }
