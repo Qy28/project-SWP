@@ -1,0 +1,33 @@
+*{
+    margin-left: 2%; 
+}
+
+.question {
+	margin: 1%;
+	font-size: 25px;
+	border: 10px solid aqua;
+	display: inline-block;
+	padding: 1% 2%;
+	position: absolute;
+}
+.choice{
+    	padding: 1% 1%;
+}
+.questionBar {
+	display: inline-block;
+	position: absolute;
+	left: 65%;
+	width: 30%;
+	height: 85%;
+	border: 10px solid aqua;
+	z-index: 0;
+	top: 5%;
+}
+.questionBarItems{
+    	margin: 1%;
+	font-size: 25px;
+	border: 10px solid aqua;
+	display: inline-block;
+	padding: 3% 6%;
+	position: absolute;
+}
