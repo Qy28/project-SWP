@@ -8,6 +8,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f1f1f1;
+}
+.top-bar .title {
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+.top-bar .auth-buttons {
+  display: flex;
+  gap: 10px;
+}
 </style>
 
 <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -43,21 +59,25 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 <div class="w3-main" style="margin-left:300px">
 
   <!-- Header -->
+  <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+  <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
   
-    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
-    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-    
-    <h1><b class="content-head">SproutEnglish</b></h1>
-    <div class="w3-section w3-bottombar w3-padding-16">
-      <span class="w3-margin-right">Filter:</span> 
-      <button class="w3-button w3-black">ALL</button>
-      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Reading </button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-diamond w3-margin-right"></i>Listening</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-diamond w3-margin-right"></i>Writing</button>
+  <div class="top-bar">
+    <h1 class="title">SproutEnglish</h1>
+    <div class="auth-buttons">
+      <a href="Views/SignUp.jsp" class="w3-button w3-blue">Sign Up</a>
+      <a href="Views/Login.jsp" class="w3-button w3-green">Login</a>
     </div>
-    
-  
-  
+  </div>
+
+  <div class="w3-section w3-bottombar w3-padding-16">
+    <span class="w3-margin-right">Filter:</span> 
+    <button class="w3-button w3-black">ALL</button>
+    <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Reading</button>
+    <button class="w3-button w3-white w3-hide-small"><i class="fa fa-diamond w3-margin-right"></i>Listening</button>
+    <button class="w3-button w3-white w3-hide-small"><i class="fa fa-diamond w3-margin-right"></i>Writing</button>
+  </div>
+
   <!-- First Photo Grid-->
   <div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom">
@@ -120,13 +140,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </div>
   </div>
 
-
-
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     <h4><b>About Me</b></h4>
     <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
     <hr>
-  
+  </div>
+
   <!-- Contact Section -->
   <div class="w3-container w3-padding-large w3-grey">
     <h4 id="contact"><b>Contact Me</b></h4>
@@ -164,40 +183,38 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   <!-- Footer -->
   <footer class="w3-container w3-padding-32 w3-dark-grey">
-  <div class="w3-row-padding">
-    <div class="w3-third">
-      <h3>Overall</h3>
-      <p>Any-level courses on various aspects of English, including grammar and writing. 
-        Convenient for learning on the go; extensive library of lessons; paid subscription for premium content.
-      </p>
+    <div class="w3-row-padding">
+      <div class="w3-third">
+        <h3>Overall</h3>
+        <p>Any-level courses on various aspects of English, including grammar and writing. 
+          Convenient for learning on the go; extensive library of lessons; paid subscription for premium content.
+        </p>
+      </div>
+    
+      <div class="w3-third">
+        <h3>BLOG POSTS</h3>
+        <ul class="w3-ul w3-hoverable">
+          <li class="w3-padding-16">
+            <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Lorem</span><br>
+            <span>Sed mattis nunc</span>
+          </li>
+          <li class="w3-padding-16">
+            <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+            <span class="w3-large">Ipsum</span><br>
+            <span>Praes tinci sed</span>
+          </li> 
+        </ul>
+      </div>
 
+      <div class="w3-third">
+        <h3>POPULAR TAGS</h3>
+        <p>
+          <span class="w3-tag w3-black w3-margin-bottom">Smart Study</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">New day New word</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Learning Stratedgy</span>
+          <span class="w3-tag w3-grey w3-small w3-margin-bottom">Hoc cung quy beo</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Scholarship</span> 
+        </p>
+      </div>
     </div>
-  
-    <div class="w3-third">
-      <h3>BLOG POSTS</h3>
-      <ul class="w3-ul w3-hoverable">
-        <li class="w3-padding-16">
-          <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">Lorem</span><br>
-          <span>Sed mattis nunc</span>
-        </li>
-        <li class="w3-padding-16">
-          <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
-          <span class="w3-large">Ipsum</span><br>
-          <span>Praes tinci sed</span>
-        </li> 
-      </ul>
-    </div>
-
-    <div class="w3-third">
-      <h3>POPULAR TAGS</h3>
-      <p>
-        <span class="w3-tag w3-black w3-margin-bottom">Smart Study</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">New day New word</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Learning Stratedgy</span>
-        <span class="w3-tag w3-grey w3-small w3-margin-bottom">Hoc cung quy beo</span> <span class="w3-tag w3-grey w3-small w3-margin-bottom">Scholarship</span> 
-      </p>
-    </div>
-
-  </div>
   </footer>
   
   <div class="w3-black w3-center w3-padding-24">Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a></div>
