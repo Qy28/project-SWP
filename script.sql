@@ -231,7 +231,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Test](
-	[TestId] [int] NOT NULL,
+	[TestId] [int] NOT NULL IDENTITY(1,1),
 	[Title] [varchar](64) NULL,
 	[Pid] [varchar](320) NULL,
 	[Level] [decimal](2, 0) NOT NULL,
