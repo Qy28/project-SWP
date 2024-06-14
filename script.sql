@@ -174,11 +174,7 @@ GO
 CREATE TABLE [dbo].[QuestionAnswerDetail](
 	[QuestionId] [int] NOT NULL,
 	[QuestionAnswer] [text] NOT NULL,
-	[QuestionState] [bit] NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[QuestionId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+	[QuestionState] [bit] NOT NULL
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 /****** Object:  Table [dbo].[QuestionHistory]    Script Date: 04/06/2024 3:27:13 PM ******/
