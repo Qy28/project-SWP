@@ -38,7 +38,7 @@ public class Question_Answer_Detail {
         this.questionAnswer = questionAnswer;
     }
 
-    public boolean isQuestionState() {
+    public boolean getQuestionState() {
         return questionState;
     }
 

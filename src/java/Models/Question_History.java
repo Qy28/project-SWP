@@ -11,7 +11,7 @@ package Models;
 public class Question_History {
     private String pId;
     private int questionId;
-    private String text;
+    private String result;
 
     public Question_History() {
     }
@@ -19,7 +19,7 @@ public class Question_History {
     public Question_History(String pId, int questionId, String text) {
         this.pId = pId;
         this.questionId = questionId;
-        this.text = text;
+        this.result = text;
     }
 
     public String getpId() {
@@ -38,12 +38,12 @@ public class Question_History {
         this.questionId = questionId;
     }
 
-    public String getText() {
-        return text;
+    public String getResult() {
+        return result;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setResult(String text) {
+        this.result = text;
     }
     
     

@@ -13,19 +13,19 @@ public class Question {
     private int testId;
     private int questionTypeId;
     private String detail;
-    private String answer;
     private String answerDescipt;
+    private boolean state;
 
     public Question() {
     }
 
-    public Question(int questionId, int testId, int questionTypeId, String detail, String answer, String answerDescipt) {
+    public Question(int questionId, int testId, int questionTypeId, String detail, String answerDescipt,boolean state) {
         this.questionId = questionId;
         this.testId = testId;
         this.questionTypeId = questionTypeId;
         this.detail = detail;
-        this.answer = answer;
         this.answerDescipt = answerDescipt;
+        this.state=state;
     }
 
     public int getQuestionId() {
@@ -56,16 +56,15 @@ public class Question {
         return detail;
     }
 
+    public boolean getState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
     public void setDetail(String detail) {
         this.detail = detail;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
     }
 
     public String getAnswerDescipt() {
