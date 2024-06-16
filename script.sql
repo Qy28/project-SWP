@@ -266,10 +266,10 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TestHistory](
 	[Pid] [varchar](320) NOT NULL,
-	[TestId] [int] NOT NULL,
+	[TestId] [int] NULL,
 	[TimeTake] [date] NOT NULL,
-	[Result] [text] NOT NULL
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+	[Result] [varchar](140) NOT NULL
+) 
 GO
 ALTER TABLE [dbo].[QuestionType] ADD  DEFAULT ((1)) FOR [NumsOfQuestion]
 GO
@@ -323,10 +323,6 @@ ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[TestFeedback]  WITH CHECK ADD FOREIGN KEY([Pid])
 REFERENCES [dbo].[Learner] ([Pid])
-ON DELETE CASCADE
-GO
-ALTER TABLE [dbo].[TestHistory]  WITH CHECK ADD FOREIGN KEY([TestId])
-REFERENCES [dbo].[Test] ([TestId])
 ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[TestHistory]  WITH CHECK ADD FOREIGN KEY([Pid])
