@@ -154,9 +154,9 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Question](
-	[QuestionId] [int] NOT NULL,
+	[QuestionId] [int] NOT NULL IDENTITY(1,1),
 	[TestId] [int]  NULL,
-	[QuestionTypeId] [decimal](10, 0) NOT NULL,
+	[QuestionTypeId] [int] NOT NULL,
 	[Detail] [text] NOT NULL,
 	[AnswerDescription] [text] NULL,
 	 [State] [bit] null,
@@ -199,7 +199,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[QuestionType](
-	[QuestionTypeId] [decimal](10, 0) NOT NULL,
+	[QuestionTypeId] [int] identity(1,1) not null,
 	[TypeName] [varchar](32) NOT NULL,
 	[NumsOfQuestion] [decimal](2, 0) NULL,
 PRIMARY KEY CLUSTERED 
