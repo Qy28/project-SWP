@@ -201,7 +201,6 @@ GO
 CREATE TABLE [dbo].[QuestionType](
 	[QuestionTypeId] [int] identity(1,1) not null,
 	[TypeName] [varchar](32) NOT NULL,
-	[NumsOfQuestion] [decimal](2, 0) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[QuestionTypeId] ASC
@@ -270,8 +269,6 @@ CREATE TABLE [dbo].[TestHistory](
 	[TimeTake] [date] NOT NULL,
 	[Result] [varchar](140) NOT NULL
 ) 
-GO
-ALTER TABLE [dbo].[QuestionType] ADD  DEFAULT ((1)) FOR [NumsOfQuestion]
 GO
 ALTER TABLE [dbo].[Test] ADD  DEFAULT ('No title Test') FOR [Title]
 GO
