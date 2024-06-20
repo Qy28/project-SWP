@@ -160,6 +160,8 @@ CREATE TABLE [dbo].[Question](
 	[Detail] [text] NOT NULL,
 	[AnswerDescription] [text] NULL,
 	 [State] [bit] null,
+	 NumsOfQues tinyint default(1),
+	 NumsOfQues tinyint default(1) not null,
 PRIMARY KEY CLUSTERED 
 (
 	[QuestionId] ASC
