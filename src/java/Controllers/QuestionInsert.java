@@ -5,8 +5,11 @@
 
 package Controllers;
 
+import DAL.QuestionDAO;
+import DAL.Question_AnswerDAO;
 import DAL.TestDAO;
-import Models.Paging;
+import Models.Question;
+import Models.Question_Answer_Detail;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -19,8 +22,8 @@ import jakarta.servlet.http.HttpSession;
  *
  * @author Admin
  */
-public class TestMenu extends HttpServlet {
-   int[] nrpp = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+public class QuestionInsert extends HttpServlet {
+   
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -30,11 +33,7 @@ public class TestMenu extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        HttpSession ses=request.getSession();
-        if(ses.getAttribute("Test")!=null) ses.setAttribute("Test", null);
-        TestDAO.INS.loadTest();
-        request.setAttribute("testDAO", TestDAO.INS);
-        request.getRequestDispatcher("Views/TestMenu.jsp").forward(request, response);
+        request.getRequestDispatcher("TestMenu").forward(request, response);
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -48,29 +47,6 @@ public class TestMenu extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        TestDAO.INS.loadTest();
-        int index;
-        try {
-            index = Integer.parseInt(request.getAttribute("index") + "");
-        } catch (NumberFormatException e) {
-            index = 0;
-        }
-        int nrpps;
-        try {
-            nrpps = Integer.parseInt(request.getAttribute("nrpp") + "");
-        } catch (NumberFormatException e) {
-            nrpps = 6;
-        }
-        Paging p = new Paging(TestDAO.INS.getTest().size(), nrpps, index);
-        p.calc();
-        request.setAttribute("page", p);
-        request.setAttribute("nrppArr", this.nrpp);
-        processRequest(request, response);
-        String s=request.getParameter("type");
-        if(s.equals("1")){
-            int id=Integer.parseInt(request.getParameter("id"));
-            TestDAO.INS.deleteTest(id);
-        }
         processRequest(request, response);
     } 
 
@@ -84,29 +60,30 @@ public class TestMenu extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int index = Integer.parseInt(request.getParameter("index"));
-            int total = Integer.parseInt(request.getParameter("total"));
-            int nrpp = Integer.parseInt(request.getParameter("nrpp"));
-            if (request.getParameter("btnHome") != null) {
-                index = 0;
+        int nums= Integer.parseInt(request.getParameter("numQues"));
+        HttpSession ses=request.getSession();
+        Models.Test tst= (Models.Test)ses.getAttribute("Test");
+        TestDAO.INS.insertTest(tst);
+        for(int i=1;i<=nums;i++){
+            String a=i+"";
+            int testId= tst.getTestId();
+            int typeId=  Integer.parseInt(request.getParameter("type"+a));
+            String details=request.getParameter("question"+a);
+            String ansDetail=request.getParameter("ans"+a);
+            byte numsQues=1;
+            if(request.getParameter("numsQues"+a)!=null &&!request.getParameter("numsQues"+a).equals("") ){
+                numsQues=Byte.parseByte(request.getParameter("numsQues"+a));
             }
-            if (request.getParameter("btnEnd") != null) {
-                index = total - 1;
+            Question tempQues=new Question(0,testId,typeId,details,ansDetail,false,numsQues);
+            QuestionDAO.INS.insertQuestion(tempQues);
+            int right=Integer.parseInt(request.getParameter("rightChoice"+a));
+            for(int j=1;j<=4;j++){
+                String b=j+"";
+                String choiceDetail=request.getParameter("choice"+b+":question"+a);
+                Question_AnswerDAO.INS.insertQuestionAnswerDetail(new Question_Answer_Detail(tempQues.getQuestionId(),choiceDetail,(right==j)));
             }
-            if (request.getParameter("btnPre") != null) {
-                index -= 1;
-            }
-            if (request.getParameter("btnNext") != null) {
-                index += 1;
-            }
-            for (int i = 0; i < total; i++) {
-                if (request.getParameter("btn" + i) != null) {
-                    index = i;
-                }
-            }
-            request.setAttribute("index", index);
-            request.setAttribute("nrpp", nrpp);
-        doGet(request, response);
+        }
+        response.sendRedirect("TestMenu");
     }
 
     /** 
