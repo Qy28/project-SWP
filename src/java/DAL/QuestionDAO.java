@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Vector;
 
 /**
@@ -85,7 +86,8 @@ public class QuestionDAO {
                 String detail=rs.getString(4);
                 String answerDescipt=rs.getString(5);
                 boolean state=rs.getBoolean(6);
-                ques.add(new Question(id, testId, questionTypeId, detail, answerDescipt, state));
+                byte nums=rs.getByte(7);
+                ques.add(new Question(id, testId, questionTypeId, detail, answerDescipt, state,nums));
             }
         } catch (SQLException e) {
             System.out.println("Error at load Question" + e.getMessage());
@@ -94,16 +96,17 @@ public class QuestionDAO {
     
     public void updateQuestion(Question q){
         String sql = """
-                                        Update Question   SET [TestId] = ?   ,[QuestionTypeId] = ?,[Detail]=?,[AnswerDescription]=?,[State]=?
+                                        Update Question   SET [TestId] = ?   ,[QuestionTypeId] = ?,[Detail]=?,[AnswerDescription]=?,[State]=?,[NumsOfQues]=?
                                                                     WHERE [QuestionId] =?;""";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(6, q.getQuestionId());
+            ps.setInt(7, q.getQuestionId());
             ps.setInt(1, q.getTestId());
             ps.setInt(2, q.getQuestionTypeId());
             ps.setString(3, q.getDetail());
             ps.setString(4, q.getAnswerDescipt());
             ps.setBoolean(5, q.getState());
+            ps.setByte(6, q.getNumsOfQ());
             ps.execute();
         } catch (SQLException e) {
             System.out.println("Error at Update Question" + e.getMessage());
@@ -122,14 +125,27 @@ public class QuestionDAO {
     public void insertQuestion(Question q){
         String sql="Insert into Question values (?,?,?,?,?,?)";
         try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, q.getQuestionId());
-            ps.setInt(2, q.getTestId());
-            ps.setInt(3, q.getQuestionTypeId());
-            ps.setString(4, q.getDetail());
-            ps.setString(5, q.getAnswerDescipt());
-            ps.setBoolean(6, q.getState());
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, q.getTestId());
+            ps.setInt(2, q.getQuestionTypeId());
+            ps.setString(3, q.getDetail());
+            ps.setString(4, q.getAnswerDescipt());
+            ps.setBoolean(5, q.getState());
+            ps.setByte(6, q.getNumsOfQ());
             ps.execute();
+                        int affectedRows = ps.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Creating test failed, no rows affected.");
+            }
+
+            try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    q.setQuestionId(generatedKeys.getInt(1));
+                } else {
+                    throw new SQLException("Creating test failed, no ID obtained.");
+                }
+            }
         } catch (SQLException e) {
             System.out.println("Error at insert Question" + e.getMessage());
         }

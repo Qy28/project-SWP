@@ -19,11 +19,11 @@ import java.util.Vector;
 public class Question_TypeDAO {
         
     private Connection con;
-    private Vector<Question_Type> test;
+    private Vector<Question_Type> ques;
     private String status = "ok";
 
-    public Vector<Question_Type> getQuestion_Type() {
-        return test;
+    public Vector<Question_Type> getQues() {
+        return ques;
     }
     public static Question_TypeDAO INS=new Question_TypeDAO();
 
@@ -40,8 +40,8 @@ public class Question_TypeDAO {
         }
     }
 
-    public void setQuestion_Type(Vector<Question_Type> test) {
-        this.test = test;
+    public void setQues(Vector<Question_Type> ques) {
+        this.ques = ques;
     }
 
     public static Question_TypeDAO getINS() {
@@ -65,22 +65,21 @@ public class Question_TypeDAO {
     }
     
 
-    public Question_TypeDAO(Vector<Question_Type> test) {
-        this.test = test;
+    public Question_TypeDAO(Vector<Question_Type> ques) {
+        this.ques = ques;
     }
     
     public void loadQuestion_Type(){
             String sql = """
                    Select * from QuestionType""";
-        test = new Vector<>();
+        ques = new Vector<>();
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String typeName = rs.getString(2);
-                int numOfQuestion = rs.getInt(3);
-                test.add(new Question_Type(id, typeName, numOfQuestion));
+                ques.add(new Question_Type(id, typeName));
             }
         } catch (SQLException e) {
             System.out.println("Error at load QuestionType" + e.getMessage());
@@ -89,13 +88,12 @@ public class Question_TypeDAO {
     
     public void updateQuestion_Type(Question_Type q){
         String sql = """
-                                        Update QuestionType   SET [TypeName] = ?   ,[NumsOfQuestion] = ?
+                                        Update QuestionType   SET [TypeName] = ? 
                                                                     WHERE [QuestionTypeId] =?;""";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, q.getTypeName());
-            ps.setInt(2, q.getNumOfQuestion());
-            ps.setInt(3, q.getQuestionTypeId());
+            ps.setInt(2, q.getQuestionTypeId());
             ps.execute();
         } catch (SQLException e) {
             System.out.println("Error at Update QuestionType" + e.getMessage());
@@ -112,12 +110,10 @@ public class Question_TypeDAO {
         }
     }
     public void insertQuestion_Type(Question_Type q){
-        String sql="Insert into QuestionType values (?,?,?)";
+        String sql="Insert into QuestionType values (?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(2, q.getTypeName());
-            ps.setInt(3, q.getNumOfQuestion());
-            ps.setInt(1, q.getQuestionTypeId());
+            ps.setString(1, q.getTypeName());
             ps.execute();
         } catch (SQLException e) {
             System.out.println("Error at Insert into QuestionType" + e.getMessage());

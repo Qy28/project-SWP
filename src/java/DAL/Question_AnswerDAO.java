@@ -114,7 +114,7 @@ public class Question_AnswerDAO {
             System.out.println("Error at load Delete from QuestionAnswerDetail" + e.getMessage());
         }
     }
-    public void insertTest(Question_Answer_Detail qad){
+    public void insertQuestionAnswerDetail(Question_Answer_Detail qad){
         String sql="Insert into QuestionAnswerDetail values (?,?,?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
